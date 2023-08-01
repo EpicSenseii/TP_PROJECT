@@ -11,7 +11,7 @@
     </nav>
     <div class="cta-wrapper">
         <a href="#default-state" id="default-state-cta" class="aLink active">En savoir plus</a>
-        <a href="#violet-state" id="violet-state-cta" class="aLink">Violet state</a>
+        <a href="#violet-state" id="violet-state-cta" class="aLink">Lorem</a>
         <a href="views/pages/mainPage.php" class="aLink">Entrer</a>
     </div>
 </div>
