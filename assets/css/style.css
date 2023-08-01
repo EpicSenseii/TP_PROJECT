@@ -1,0 +1,83 @@
+/* CSS RESET */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #494949;
+}
+
+/* HEADER */
+.canvas-interactive-wrapper {
+    position: relative;
+    height: 100dvh;
+    text-align: center;
+}
+
+.canvas-interactive-wrapper canvas {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.canvas-interactive-wrapper .cta-wrapper a,
+h1,
+img {
+    position: relative;
+    display: inline-block;
+    padding: 3px 7px;
+    border: solid 1px transparent;
+    margin-right: 50px;
+    z-index: 99;
+    text-decoration: none;
+    /* color: #222; */
+    transition: border .3s;
+}
+
+.cta-wrapper {
+    position: absolute;
+    display: inline-block;
+    padding: 3px 7px;
+    border: solid 1px transparent;
+    z-index: 99;
+    text-decoration: none;
+    color: #222;
+    transition: border .3s;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 0;
+}
+
+
+
+.canvas-interactive-wrapper .cta-wrapper a.active {
+    border-color: #222;
+}
+
+.landingHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+#logoName {
+    font-weight: 900;
+    font-size: 10rem;
+    color: black;
+}
+
+#logoLanding {
+    height: 200px;
+}
+
+.aLink {
+    font-size: 1.5rem;
+    color: black;
+}
