@@ -6,9 +6,9 @@
     </div>
     <div class="rightCardSection">
         <div class="artistHeader">
-            <i id="playBtn" class="bi bi-play-fill"></i>
+            <i id="playBtn" class="bi bi-play-fill playBtn"></i>
             <!-- INTERHCANGER ICONE PLAY ET PAUSE -->
-            <!-- <i class="bi bi-pause-fill"></i> -->
+            <!-- <i class="bi bi-pause-fill pauseBtn"></i> -->
             <div class="artistNameTitle">
                 <p class="artistName">Epic</p>
                 <p class="musicTitle">First Music </p>
@@ -18,26 +18,26 @@
             <div class="loader-overlay" id="loaderOverlay">
                 <div class="loader"></div>
             </div>
-            <div id="waveform"></div>
+            <div class="waveform"></div>
+        </div>
+        <div class="socials">
+            <i class="bi bi-heart"></i>
+            <!-- <i class="bi bi-heart-fill"></i>
+                    CHANGE WHEN LIKED -->
+            <i class="bi bi-share-fill"></i>
+            <i class="bi bi-play-fill"></i>
         </div>
     </div>
 </div>
 
+
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
 
-    const wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: "#57508b",
-        progressColor: "#d1159f",
-        barWidth: 3,
-        barGap: 0.5,
-        url: "<?= $musicDir ?>",
-    })
-
     let isPlaying = false;
+    let waves = document.querySelectorAll('.waveform');
 
-    function togglePlayPause() {
+    function togglePlayPause(wavesurfer, playBtn) {
         if (!isPlaying) {
             wavesurfer.play();
             isPlaying = true;
@@ -49,27 +49,41 @@
         }
     }
 
-    wavesurfer.on('interaction', () => {
-        if (!isPlaying) {
-            wavesurfer.play();
-            isPlaying = true;
-            playBtn.classList.replace('bi-play-fill', 'bi-pause-fill');
-        }
-    });
 
-    playBtn.addEventListener('click', () => {
-        togglePlayPause();
-    });
+    for (let wave of waves) {
+        let wavesurfer = WaveSurfer.create({
+            container: wave,
+            waveColor: "#57508b",
+            progressColor: "#d1159f",
+            barWidth: 3,
+            barGap: 0.5,
+            url: "<?= $musicDir ?>",
+        })
 
-    wavesurfer.on('ready', () => {
-        // Une fois que la musique est chargée, masquer le loader
-        document.getElementById('loaderOverlay').style.display = 'none';
-        // Afficher le graphique de la musique une fois chargée
-        document.getElementById('waveform').style.display = 'block';
-    });
+        wavesurfer.on('ready', () => {
+            wave.previousElementSibling.style.display = 'none';
+        });
+
+        wavesurfer.on('interaction', (wavesurfer, playBtn) => {
+            if (!isPlaying) {
+                wavesurfer.play();
+                isPlaying = true;
+                playBtn.classList.replace('bi-play-fill', 'bi-pause-fill');
+            }
+        });
+
+        let playBtn = wave.parentElement.previousElementSibling.firstElementChild;
+        playBtn.addEventListener('click', () => {
+            togglePlayPause(wavesurfer, playBtn);
+        });
+    }
 </script>
 
 <style>
+    i {
+        cursor: pointer;
+    }
+
     .loader-overlay {
         display: flex;
         justify-content: center;
@@ -101,9 +115,10 @@
 
     .soundCardContainer {
         width: 800px;
-        height: 200px;
+        /* height: 200px; */
         display: flex;
         margin-top: 100px;
+        border: 1px solid black;
     }
 
     .artistImg {
@@ -118,10 +133,12 @@
 
     .artistHeader {
         margin-left: 30px;
+        display: flex;
+        align-items: center;
     }
 
-    .bi-play-fill,
-    .bi-pause-fill {
+    .playBtn,
+    .pauseBtn {
         background: #D68CD6;
         padding: 10px;
         border-radius: 50%;
@@ -130,6 +147,7 @@
 
     .artistNameTitle {
         margin-top: 20px;
+        margin-left: 20px;
     }
 
     .artistName {
@@ -144,5 +162,16 @@
     .audioSection {
         width: 30vw;
         margin-left: 30px;
+        padding: 20px 0;
+    }
+
+    #waveform {}
+
+    .socials {
+        margin-left: 30px;
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        margin: 0 auto;
     }
 </style>

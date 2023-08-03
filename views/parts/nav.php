@@ -1,8 +1,8 @@
 <nav>
     <ul>
         <div class="navFlex logoAndTitle">
-            <li><a href=""><img src="../../assets/img/logo_transparent.png" alt=""></a></li>
-            <li><a href="">
+            <li><a href="../pages/mainPage.php"><img src="../../assets/img/logo_transparent.png" alt=""></a></li>
+            <li><a href="../pages/mainPage.php">
                     <h1>SoundTherapy</h1>
                 </a></li>
         </div>
@@ -15,7 +15,7 @@
             <li><a href="">Uploader</a></li>
             <li><a href="">USERICON</a></li>
             <!-- SI PAS CONNECTE -->
-            <li><a href="">CONNECTEZ VOUS</a></li>
+            <li><a href="../pages/signup.php">CONNECTEZ VOUS</a></li>
             <li><i class="bi bi-bell-fill"></i></li>
         </div>
     </ul>
@@ -40,9 +40,11 @@
     }
 
     nav ul {
+        margin: 0 auto;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        width: 70%;
     }
 
     .navFlex {
