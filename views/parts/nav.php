@@ -8,14 +8,15 @@
         </div>
         <div class="search-container">
             <input type="search" class="musicSearch" name="search" id="search">
-            <i class="bi bi-search"></i>
+            <i class="bi bi-search loupe"></i>
         </div>
 
         <div class="navFlex userNAvSection">
-            <li><a href="">Uploader</a></li>
-            <li><a href="">USERICON</a></li>
-            <!-- SI PAS CONNECTE -->
-            <li><a href="../pages/signup.php">CONNECTEZ VOUS</a></li>
+            <li><a href="../pages/uploadPage.php">Uploader</a></li>
+            <div class="iconAndConnection">
+                <li><img class="userIcon" src="https://picsum.photos/200" alt=""></li>
+                <li id="connectionBtn"><a href="../pages/signin.php">Connection</a></li>
+            </div>
             <li><i class="bi bi-bell-fill"></i></li>
         </div>
     </ul>
@@ -32,6 +33,7 @@
     nav h1 {
         text-decoration: none;
         color: whitesmoke;
+        margin: 0;
     }
 
     nav {
@@ -43,8 +45,8 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
-        align-items: center;
-        width: 70%;
+        /* align-items: center; */
+        /* width: 70%; */
     }
 
     .navFlex {
@@ -65,29 +67,32 @@
 
     .logoAndTitle {}
 
-    .userNAvSection li {
+    .userNAvSection li:not(#connectionBtn) {
         margin-left: 20px;
+    }
+    
+    #connectionBtn {
+        margin-left: 5px;
     }
 
     .search-container {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        /* border: 1px solid #ccc; */
+        width: 300px;
         border-radius: 4px;
         padding: 5px;
-        margin-left: 30%;
     }
 
     .musicSearch {
         flex: 1;
         height: 30px;
         padding: 0 5px;
-        width: 300px;
         border: none;
         border-radius: 3px;
         outline: none;
         font-size: 16px;
+        
     }
 
     .musicSearch:focus {
@@ -97,7 +102,17 @@
     .bi-search {
         color: white;
         font-size: 20px;
-        margin-left: 5px;
+        margin-left: 10px;
+    }
+
+    .iconAndConnection {
+        display: flex;
+        align-items: center;
+    }
+
+    .userIcon {
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     input[type="search"]::-webkit-search-decoration,

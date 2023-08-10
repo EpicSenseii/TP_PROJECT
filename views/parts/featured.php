@@ -1,44 +1,30 @@
 <?php $musicDir = "../../assets/sounds/1.mp3"; ?>
 
-<div class="musicContainer">
-    <div class="soundCardContainer">
-        <div class="artistImg">
-            <img src="https://picsum.photos/300" alt="">
-        </div>
-        <div class="rightCardSection">
-            <div class="artistHeader">
-                <i id="playBtn" class="bi bi-play-fill playBtn"></i>
-                <div class="artistNameTitle">
-                    <p class="artistName">Epic</p>
-                    <p class="musicTitle">First Music </p>
-                </div>
-            </div>
-            <div class="audioSection">
-                <div class="loader-overlay" id="loaderOverlay">
-                    <div class="loader"></div>
-                </div>
-                <div class="waveform"></div>
-            </div>
-            <div class="socials">
-                <i class="bi bi-heart"></i>
-                <!-- <i class="bi bi-heart-fill"></i>
-                    CHANGE WHEN LIKED -->
-                <i class="bi bi-share-fill"></i>
-                <div class="socialListened">
-                    <i class="bi bi-play-fill musicListened"></i>
-                    <span>32</span>
-                </div>
-                <div class="socialComments">
-                    <i class="bi bi-chat-right-fill"></i>
-                    <span>4</span>
-                </div>
-            </div>
-        </div>
+
+<section class="splide" aria-label="Splide Basic HTML Example">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide"><?php include "cardsFeatured.php" ?></li>
+            <li class="splide__slide"><?php include "cardsFeatured.php" ?></li>
+            <li class="splide__slide"><?php include "cardsFeatured.php" ?></li>
+        </ul>
     </div>
-</div>
+</section>
+
+<!-- <div class="musicContaineFeatured">
+
+</div> -->
 
 
 <script type="module">
+    var splide = new Splide( '.splide', {
+  type   : 'loop',
+  drag   : 'free',
+  snap   : true,
+  perPage: 3,
+} );
+
+splide.mount();
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
 
     let isPlaying = false;
@@ -85,10 +71,17 @@
         });
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
 <style>
     i {
         cursor: pointer;
+    }
+
+    .musicContaineFeatured {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .loader-overlay {
@@ -120,8 +113,8 @@
         }
     }
 
-    .soundCardContainer {
-        width: 800px;
+    .soundCardContainerFeatured {
+        /* width: 800px; */
         display: flex;
         margin-top: 100px;
     }
@@ -164,10 +157,11 @@
         font-size: 1.1em;
     }
 
-    .audioSection {
+    .audioSectionFeatured {
         width: 30vw;
         margin-left: 30px;
         padding: 20px 0;
+        display: none;
     }
 
     .waveform {
@@ -205,9 +199,5 @@
         font-size: 12px;
         margin-left: 5px;
     }
-
-    /* .musicContainer {
-        background: rgba(0, 0, 0, .1);
-        width: 60%;
-    } */
+    
 </style>
