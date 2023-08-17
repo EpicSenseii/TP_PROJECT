@@ -6,3 +6,4 @@
         <?php include "soundCard.php"; ?>
     </div>
 </section>
+<hr>

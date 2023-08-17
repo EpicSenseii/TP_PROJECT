@@ -13,6 +13,8 @@
     </div>
 </section>
 
+<hr>
+
 
 
 <script type="module">
@@ -46,7 +48,7 @@
         let wavesurfer = WaveSurfer.create({
             container: wave,
             waveColor: "#57508b",
-            progressColor: "#d1159f",
+            progressColor: "#c942a6",
             barWidth: 3,
             barGap: 0.5,
             url: "<?= $musicDir ?>",

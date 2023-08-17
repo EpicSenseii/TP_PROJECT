@@ -5,6 +5,11 @@
     font-family: 'Roboto', sans-serif;
     color: #494949;
 }
+/* MAIN */
+.mainContainer {
+    margin: 0 auto;
+    width: 50%;
+}
 
 /* HEADER */
 .canvas-interactive-wrapper {
@@ -132,6 +137,13 @@ label {
 /* PARTS */
 .partsTitles {
     padding-top: 50px;
+}
+
+hr {
+    margin-top: 50px;
+    height: 1px;
+    background-color: #d1d1d1;
+    border: none;
 }
 
 /* CARDS */
