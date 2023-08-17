@@ -26,6 +26,7 @@
 
 .canvas-interactive-wrapper .cta-wrapper a,
 h1,
+p,
 img {
     position: relative;
     display: inline-block;
@@ -69,17 +70,23 @@ img {
 
 #logoName {
     font-weight: 900;
-    font-size: 10rem;
+    font-size: 8vw;
     color: black;
 }
 
 #logoLanding {
-    height: 200px;
+    /* height: 200px; */
+    height: 10vw;
 }
 
 .aLink {
     font-size: 1.5rem;
     color: black;
+}
+
+.landingDescription {
+    font-size: 3em;
+    margin-top: 3em;
 }
 
 /* FORM */
@@ -120,4 +127,178 @@ label {
     margin-top: 15px !important;
     margin-bottom: 10px;
     cursor: pointer;
+}
+
+/* PARTS */
+.partsTitles {
+    padding-top: 50px;
+}
+
+/* CARDS */
+
+.soundCardContainer {
+    display: flex;
+    margin-top: 100px;
+}
+
+.artistHeader {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.artistNameTitle {
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.audioSection {
+    width: 30vw;
+    margin-left: 30px;
+    padding: 20px 0;
+}
+
+
+/* FEATURED CARDS */
+
+i {
+    cursor: pointer;
+}
+
+.soundCardContainerFeatured {
+    display: flex;
+    flex-direction: column;
+}
+
+.splide {
+    padding: 0 10%;
+}
+
+.loader-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 9999;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.soundCardContainerFeatured {
+    display: flex;
+    margin-top: 100px;
+}
+
+.artistImg {
+    height: 200px;
+    width: 200px;
+}
+
+.artistImg img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.artistHeaderFeatured {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.playBtn,
+.pauseBtn {
+    background: #D68CD6;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.artistNameTitleFeatured {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.artistName {
+    color: #8A8989;
+}
+
+.musicTitle {
+    color: #494949;
+    font-size: 1.1em;
+}
+
+.audioSectionFeatured {
+    width: 30vw;
+    margin-left: 30px;
+    padding: 20px 0;
+    display: none;
+}
+
+.waveform {
+    width: 100%;
+}
+
+.socials {
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.socialLikes {
+    display: flex;
+    align-items: center;
+}
+
+.socialLikes span {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.socialListened {
+    display: flex;
+    align-items: center;
+}
+
+.socialListened span {
+    font-size: 12px;
+}
+
+.musicListened {
+    font-size: 25px;
+}
+
+.socialComments {
+    display: flex;
+    align-items: center;
+}
+
+.socialComments span {
+    font-size: 12px;
+    margin-left: 5px;
 }

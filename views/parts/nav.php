@@ -15,14 +15,20 @@
             <li><a href="../pages/uploadPage.php">Uploader</a></li>
             <div class="iconAndConnection">
                 <li><img class="userIcon" src="https://picsum.photos/200" alt=""></li>
-                <li id="connectionBtn"><a href="../pages/signin.php">Connection</a></li>
+                <li id="connectionBtn"><a href="../pages/signin.php">Connexion</a></li>
             </div>
             <li><i class="bi bi-bell-fill"></i></li>
         </div>
     </ul>
 </nav>
 
-<!-- AJOUTER ACTIVE CLASS SUR LES LIENS / PAGES -->
+<!-- 
+    Ajouter MODAL sur NOTIFICATIONS 
+    Corriger barre de RECHERCHE non RESPONSIVE
+    Changer l'image PROFIL si non CONNECTE
+    REMPLACER "connexion" par le NOM UTILISATEUR si CONNECTE
+    Rentre le CLIQUE IMPOSSIBLE si NON CONNECTE
+-->
 
 <style>
     ul {
@@ -45,8 +51,6 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
-        /* align-items: center; */
-        /* width: 70%; */
     }
 
     .navFlex {
@@ -65,12 +69,10 @@
         padding: 0;
     }
 
-    .logoAndTitle {}
-
     .userNAvSection li:not(#connectionBtn) {
         margin-left: 20px;
     }
-    
+
     #connectionBtn {
         margin-left: 5px;
     }
@@ -92,7 +94,7 @@
         border-radius: 3px;
         outline: none;
         font-size: 16px;
-        
+
     }
 
     .musicSearch:focus {

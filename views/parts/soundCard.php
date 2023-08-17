@@ -20,9 +20,10 @@
                 <div class="waveform"></div>
             </div>
             <div class="socials">
-                <i class="bi bi-heart"></i>
-                <!-- <i class="bi bi-heart-fill"></i>
-                    CHANGE WHEN LIKED -->
+                <div class="socialLikes">
+                    <i class="bi bi-heart"></i>
+                    <span>4</span>
+                </div>
                 <i class="bi bi-share-fill"></i>
                 <div class="socialListened">
                     <i class="bi bi-play-fill musicListened"></i>
@@ -38,7 +39,7 @@
 </div>
 
 
-<script type="module">
+<!-- <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
 
     let isPlaying = false;
@@ -84,130 +85,4 @@
             togglePlayPause(wavesurfer, playBtn);
         });
     }
-</script>
-
-<style>
-    i {
-        cursor: pointer;
-    }
-
-    .loader-overlay {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        width: 100px;
-        height: 100px;
-        z-index: 9999;
-    }
-
-    .loader {
-        border: 6px solid #f3f3f3;
-        border-top: 6px solid #3498db;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    .soundCardContainer {
-        width: 800px;
-        display: flex;
-        margin-top: 100px;
-    }
-
-    .artistImg {
-        height: 200px;
-        width: 200px;
-    }
-
-    .artistImg img {
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .artistHeader {
-        margin-left: 30px;
-        display: flex;
-        align-items: center;
-    }
-
-    .playBtn,
-    .pauseBtn {
-        background: #D68CD6;
-        padding: 10px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    .artistNameTitle {
-        margin-top: 20px;
-        margin-left: 20px;
-    }
-
-    .artistName {
-        color: #8A8989;
-    }
-
-    .musicTitle {
-        color: #494949;
-        font-size: 1.1em;
-    }
-
-    .audioSection {
-        width: 30vw;
-        margin-left: 30px;
-        padding: 20px 0;
-    }
-
-    .waveform {
-        width: 100%;
-    }
-
-    .socials {
-        margin-left: 30px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 40%;
-        margin: 0 auto;
-    }
-
-    .socialListened {
-        display: flex;
-        align-items: center;
-    }
-
-    .socialListened span {
-        font-size: 12px;
-    }
-
-    .musicListened {
-        font-size: 25px;
-    }
-
-    .socialComments {
-        display: flex;
-        align-items: center;
-    }
-
-    .socialComments span {
-        font-size: 12px;
-        margin-left: 5px;
-    }
-
-    /* .musicContainer {
-        background: rgba(0, 0, 0, .1);
-        width: 60%;
-    } */
-</style>
+</script> -->

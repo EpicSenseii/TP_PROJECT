@@ -5,7 +5,7 @@
 
 <div class="mainContainer">
     <?php include "../parts/featured.php" ?>
-    <?php include "../parts/soundCard.php"; ?>
+    <?php include "../parts/feed.php"; ?>
 </div>
 
 <?php include "../footer.php"; ?>
