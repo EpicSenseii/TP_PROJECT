@@ -1,7 +1,4 @@
 <?php $title = "SoundTherapy - Sign Up" ?>
-<?php include "../header.php"; ?>
-
-<?php include "../parts/nav.php"; ?>
 
 <form class="signupForm formFlex" action="" method="POST">
     <h1>Uploadez votre musique</h1>
@@ -19,5 +16,3 @@
     </div>
     <input class="submitBtn" type="submit" value="Uploader">
 </form>
-
-<?php include "../footer.php"; ?>

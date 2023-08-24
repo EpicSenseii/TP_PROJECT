@@ -1,8 +1,8 @@
 <nav>
     <ul>
         <div class="navFlex logoAndTitle">
-            <li><a href="../pages/mainPage.php"><img src="../../assets/img/logo_transparent.png" alt=""></a></li>
-            <li><a href="../pages/mainPage.php">
+            <li><a href="feed"><img src="../../assets/img/logo_transparent.png" alt=""></a></li>
+            <li><a href="feed">
                     <h1>SoundTherapy</h1>
                 </a></li>
         </div>
@@ -12,10 +12,10 @@
         </div>
 
         <div class="navFlex userNAvSection">
-            <li><a href="../pages/uploadPage.php">Uploader</a></li>
+            <li><a href="upload">Uploader</a></li>
             <div class="iconAndConnection">
                 <li><img class="userIcon" src="https://picsum.photos/200" alt=""></li>
-                <li id="connectionBtn"><a href="../pages/signin.php">Connexion</a></li>
+                <li id="connectionBtn"><a href="signin">Connexion</a></li>
             </div>
             <li><i class="bi bi-bell-fill"></i></li>
         </div>
