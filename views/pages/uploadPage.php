@@ -1,6 +1,4 @@
-<?php $title = "SoundTherapy - Sign Up" ?>
-
-<form class="signupForm formFlex" action="" method="POST">
+<form class="signupForm formFlex" action="" method="POST" enctype="multipart/form-data">
     <h1>Uploadez votre musique</h1>
     <div class="userMusicFile">
         <label for="musicFile">Choisissez votre musique</label>

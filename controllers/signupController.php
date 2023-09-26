@@ -1,12 +1,12 @@
 <?php
 $title = "SoundTherapy - Sign Up";
+session_start();
 
 require_once '../models/usersModel.php';
-//var_dump($_POST);
 
 $regex = [
     'username' => '/^(?=.*[a-zA-Z]{3,})[a-zA-Z0-9-]+$/',
-    'password' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+    'password' => '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/',
     'birthdate' => '/^[0-9]{4}(-[0-9]{2}){2}$/',
 ];
 
@@ -63,7 +63,7 @@ if (count($_POST) > 0) {
 
     if (count($formErrors) == 0) {
         try {
-            if($user->add()) {
+            if ($user->add()) {
                 $success = true;
             }
         } catch (PDOException $e) {

@@ -33,8 +33,10 @@ if (count($_POST) > 0) {
 ?>
 
 <?php if (isset($success)) { ?>
-    <p>Votre inscription a bien été prise en compte.</p>
-    <p>Vous pouvez <a href="signin">vous connecter</a> dès maintenant.</p>
+    <div class="accountCreated">
+        <p>Votre inscription a bien été prise en compte.</p>
+        <p>Vous pouvez <a href="signin">vous connecter</a> dès maintenant.</p>
+    </div>
 <?php } else { ?>
     <form class="signupForm formFlex" action="" method="POST">
         <h1>Inscrivez-vous</h1>
@@ -49,12 +51,24 @@ if (count($_POST) > 0) {
             <span class="formErr"><?= $formErr['userEmail']; ?></span>
         <?php } ?>
         <label for="userPwd">Entrez votre mot de passe</label>
-        <input type="password" name="userPwd" id="userPwd" placeholder="Mot de passe">
+        <div class="pwdEye">
+            <input type="password" name="userPwd" id="userPwd" class="userPwd" placeholder="Mot de passe">
+            <span class="visibilityPwd">
+                <i class="bi bi-eye-slash-fill eyeClose" id="eyeClose"></i>
+                <i class="bi bi-eye-fill eyeOpen id=" eyeOpen"></i>
+            </span>
+        </div>
         <?php if (isset($formErr['userPwd'])) { ?>
             <span class="formErr"><?= $formErr['userPwd']; ?></span>
         <?php } ?>
         <label for="userPwdVerification">Veuillez confirmer votre mot de passe</label>
-        <input type="password" name="userPwdVerification" id="userPwdVerification" placeholder="Confirmez votre mot de passe">
+        <div class="pwdEye">
+            <input type="password" name="userPwdVerification" id="userPwdVerification" class="userPwd2" placeholder="Confirmez votre mot de passe">
+            <span class="visibilityPwd2">
+                <i class="bi bi-eye-slash-fill eyeClose" id="eyeClose"></i>
+                <i class="bi bi-eye-fill eyeOpen id=" eyeOpen"></i>
+            </span>
+        </div>
         <?php if (isset($formErr['userPwdVerification'])) { ?>
             <span class="formErr"><?= $formErr['userPwdVerification']; ?></span>
         <?php } ?>
@@ -66,3 +80,34 @@ if (count($_POST) > 0) {
         <p>Déjà un compte ? <a href="signin">Connectez-vous</a></p>
     </form>
 <?php } ?>
+
+<script>
+    const visibilityPwd = document.querySelector('.visibilityPwd');
+    const visibilityPwd2 = document.querySelector('.visibilityPwd2');
+    const passwordInputs = document.querySelector('.userPwd');
+    const passwordInputs2 = document.querySelector('.userPwd2');
+
+    visibilityPwd.addEventListener("click", (e) => {
+        if (passwordInputs.type == "password") {
+            passwordInputs.type = "text";
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        } else {
+            passwordInputs.type = "password";
+            eyeClose.style.display = "block";
+            eyeOpen.style.display = "none";
+        }
+    })
+
+    visibilityPwd2.addEventListener("click", (e) => {
+        if (passwordInputs2.type == "password") {
+            passwordInputs2.type = "text";
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        } else {
+            passwordInputs2.type = "password";
+            eyeClose.style.display = "block";
+            eyeOpen.style.display = "none";
+        }
+    })
+</script>

@@ -1,4 +1,4 @@
-<?php $musicDir = "../../assets/sounds/1.mp3"; ?>
+<?php $musicDir = "assets/sounds/1.mp3"; ?>
 
 <!-- Splide library used for caroussel -->
 
@@ -72,4 +72,4 @@
         });
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script> -->

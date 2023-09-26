@@ -1,10 +1,11 @@
 <nav>
     <ul>
         <div class="navFlex logoAndTitle">
-            <li><a href="feed"><img src="../../assets/img/logo_transparent.png" alt=""></a></li>
+            <li><a href="feed"><img src="assets/img/logo_transparent.png" alt=""></a></li>
             <li><a href="feed">
                     <h1>SoundTherapy</h1>
                 </a></li>
+                <li><a class="feed" href="feed">Feed</a></li>
         </div>
         <div class="search-container">
             <input type="search" class="musicSearch" name="search" id="search">
@@ -12,10 +13,20 @@
         </div>
 
         <div class="navFlex userNAvSection">
-            <li><a href="upload">Uploader</a></li>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <li><a href="upload">Uploader</a></li>
+            <?php } ?>
             <div class="iconAndConnection">
-                <li><img class="userIcon" src="https://picsum.photos/200" alt=""></li>
-                <li id="connectionBtn"><a href="signin">Connexion</a></li>
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <li><img class="userIcon" src="<?= $_SESSION['user']['img'] ?>" alt=""></li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <li id="connectionBtn"><a href="profil"><?= $_SESSION['user']['username'] ?></a></li>
+                    <li id="logoutBtn"><a href="logout">Déconnexion</a></li>
+                <?php } else { ?>
+                    <li id="logoutBtn"><a href="signin">Connexion</a></li>
+                <?php } ?>
             </div>
             <li><i class="bi bi-bell-fill"></i></li>
         </div>
@@ -65,6 +76,7 @@
 
     img {
         height: 40px;
+        width: 40px;
         margin: 0;
         padding: 0;
     }
@@ -75,6 +87,10 @@
 
     #connectionBtn {
         margin-left: 5px;
+    }
+
+    .feed {
+        margin-left: 15px;
     }
 
     .search-container {
