@@ -1,5 +1,5 @@
 <section class="soundsFeed">
-    <h2 class="partsTitles">Feed</h2>
+    <h1 class="partsTitles">Feed</h1>
     <div class="sounds">
         <?php include "soundCard.php"; ?>
     </div>

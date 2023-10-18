@@ -1,15 +1,17 @@
-<nav>
+<nav class="navDesktop">
     <ul>
         <div class="navFlex logoAndTitle">
             <li><a href="feed"><img src="assets/img/logo_transparent.png" alt=""></a></li>
             <li><a href="feed">
                     <h1>SoundTherapy</h1>
                 </a></li>
-                <li><a class="feed" href="feed">Feed</a></li>
+            <li><a class="feed" href="feed">Feed</a></li>
         </div>
         <div class="search-container">
-            <input type="search" class="musicSearch" name="search" id="search">
-            <i class="bi bi-search loupe"></i>
+            <form class="search-form" action="" method="get">
+                <input type="search" class="musicSearch" name="search" id="search">
+                <button type="submit" class="bi bi-search loupe"></button>
+            </form>
         </div>
 
         <div class="navFlex userNAvSection">
@@ -33,13 +35,44 @@
     </ul>
 </nav>
 
-<!-- 
-    Ajouter MODAL sur NOTIFICATIONS 
-    Corriger barre de RECHERCHE non RESPONSIVE
-    Changer l'image PROFIL si non CONNECTE
-    REMPLACER "connexion" par le NOM UTILISATEUR si CONNECTE
-    Rentre le CLIQUE IMPOSSIBLE si NON CONNECTE
--->
+<nav class="navMobile">
+    <ul>
+        <div class="navFlex logoAndTitle">
+            <li><a href="feed"><img src="assets/img/logo_transparent.png" alt=""></a></li>
+            <li><a href="feed">
+                    <h1>SoundTherapy</h1>
+                </a></li>
+            <li><a class="feed" href="feed">Feed</a></li>
+        </div>
+
+        <div class="navFlex userNAvSection">
+            <?php if (isset($_SESSION['user'])) { ?>
+                <li><a href="upload">Uploader</a></li>
+            <?php } ?>
+            <div class="iconAndConnection">
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <li><img class="userIcon" src="<?= $_SESSION['user']['img'] ?>" alt=""></li>
+                <?php } ?>
+
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <li id="connectionBtn"><a href="profil"><?= $_SESSION['user']['username'] ?></a></li>
+                    <li id="logoutBtn"><a href="logout">Déconnexion</a></li>
+                <?php } else { ?>
+                    <li id="logoutBtn"><a href="signin">Connexion</a></li>
+                <?php } ?>
+            </div>
+            <li><i class="bi bi-bell-fill"></i></li>
+        </div>
+
+        <div class="search-container">
+            <span class="bi bi-search loupe" id="searchEvent"></span>
+            <form class="search-form2" action="" method="get">
+                <input type="search" class="musicSearch" name="search" id="search">
+                <button type="submit" class="bi bi-search loupe"></button>
+            </form>
+        </div>
+    </ul>
+</nav>
 
 <style>
     ul {
@@ -62,6 +95,7 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
+        flex-wrap: wrap;
     }
 
     .navFlex {
@@ -97,9 +131,12 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        width: 300px;
         border-radius: 4px;
         padding: 5px;
+    }
+
+    .search-form {
+        width: 100%;
     }
 
     .musicSearch {
@@ -110,7 +147,7 @@
         border-radius: 3px;
         outline: none;
         font-size: 16px;
-
+        width: 300px;
     }
 
     .musicSearch:focus {
@@ -121,6 +158,9 @@
         color: white;
         font-size: 20px;
         margin-left: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 
     .iconAndConnection {
@@ -133,10 +173,38 @@
         object-fit: cover;
     }
 
+    .navMobile {
+        display: none;
+    }
+
     input[type="search"]::-webkit-search-decoration,
     input[type="search"]::-webkit-search-cancel-button,
     input[type="search"]::-webkit-search-results-button,
     input[type="search"]::-webkit-search-results-decoration {
         -webkit-appearance: none;
+    }
+
+    @media only screen and (max-width: 935px) {
+        .navDesktop {
+            display: none;
+        }
+
+        .navMobile {
+            display: block;
+        }
+
+        .search-form2 {
+            display: none;
+        }
+
+        #searchEvent {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .bi-x {
+            font-size: 30px;
+            color: white;
+        }
     }
 </style>

@@ -12,6 +12,7 @@ class posts
     public $username;
     public $email;
     public $description;
+    public $searchTerm;
     private $db;
 
     public function __construct()
@@ -48,9 +49,31 @@ class posts
 
     public function getList()
     {
-        $query = 'SELECT `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate` FROM bty9i_sounds
+        $query = 'SELECT `bty9i_sounds`.`id`, `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate` FROM bty9i_sounds
         INNER JOIN bty9i_users ON `id_bty9i_users` = bty9i_users.id';
         $request = $this->db->query($query);
+        return $request->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getOneById()
+    {
+        $query = 'SELECT `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate` FROM bty9i_sounds
+        INNER JOIN bty9i_users ON `id_bty9i_users` = bty9i_users.id 
+        WHERE `bty9i_sounds`.`id` = :id;';
+        $request = $this->db->prepare($query);
+        $request->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $request->execute();
+        return $request->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getByName()
+    {
+        $query = 'SELECT `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate` FROM bty9i_sounds
+        INNER JOIN bty9i_users ON `id_bty9i_users` = bty9i_users.id 
+        WHERE `bty9i_sounds`.`title` = :title';
+        $request = $this->db->prepare($query);
+        $request->bindValue(':title', $this->searchTerm, PDO::PARAM_INT);
+        $request->execute();
         return $request->fetchAll(PDO::FETCH_OBJ);
     }
 }

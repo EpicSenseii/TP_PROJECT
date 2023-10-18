@@ -80,5 +80,13 @@ class users
         $request->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $request->execute();
     }
+
+    public function delete()
+    {
+        $query = 'DELETE FROM `bty9i_users` WHERE `id` = :id;';
+        $request = $this->db->prepare($query);
+        $request->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $request->execute();
+    }
 }
 // ,`email`=:email,`birthdate`=:birthdate, `img`=:img, `description`=:userDescription

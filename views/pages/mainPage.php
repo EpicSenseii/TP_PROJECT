@@ -9,5 +9,3 @@
 </div>
 
 <?php include "../footer.php"; ?>
-
-<!-- AJOUTER la possibilité de mettre des vidéos à la place des images, cliquable pour agrandir (modal) -->

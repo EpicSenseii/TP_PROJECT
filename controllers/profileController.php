@@ -38,7 +38,7 @@ if (isset($_POST['updateUser'])) {
             $formErrors['image'] = "test";
         }
     } else {
-        $formErrors['image'] = "La taille de l'image est trop grande";
+        $updateProfil->img = $_SESSION['user']['img'];
     }
     if (isset($_POST['usernameChange'])) {
         $updateProfil->username = strip_tags($_POST['usernameChange']);
@@ -58,10 +58,12 @@ if (isset($_POST['updateUser'])) {
     if (count($formErrors) == 0) {
         try {
             if ($updateProfil->update()) {
-                move_uploaded_file($_FILES['userImg']['tmp_name'], '../' . $updateProfil->img);
+                if($updateProfil->img != $_SESSION['user']['img']) {
+                    move_uploaded_file($_FILES['userImg']['tmp_name'], '../' . $updateProfil->img);
+                    $_SESSION['user']['img'] = $updateProfil->img;
+                }
                 //Permet de changer le nom d'utilisateur immédiatement
                 $_SESSION['user']['username'] = $updateProfil->username;
-                $_SESSION['user']['img'] = $updateProfil->img;
                 //Permet de rafraichir la page après le submit, pour rafraichir les éléments avec les nouveaux textes
                 // echo "<meta http-equiv='refresh' content='0'>";
             }
@@ -71,7 +73,14 @@ if (isset($_POST['updateUser'])) {
     }
 }
 
-var_dump($formErrors);
+if (isset($_POST['delete'])) {
+    if ($user->delete()) {
+        unset($_SESSION['user']);
+        session_destroy();
+        header('Location:signin');
+        exit;
+    }
+}
 
 require_once '../views/header.php';
 require_once '../views/parts/nav.php';

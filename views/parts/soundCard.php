@@ -7,20 +7,38 @@ require_once '../../models/postsModel.php';
 $post = new posts();
 $getPost = $post->getList();
 
-foreach ($getPost as $sound) { ?>
+$search = new posts();
+$getSearch = $search->getByName();
 
+if (isset($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+
+    foreach ($getSearch as $post) {
+        if (stripos($post['name'], $searchTerm) !== false) {
+            // Afficher le post correspondant au terme de recherche
+            var_dump($post);
+        }
+    }
+}
+
+
+foreach ($getPost as $sound) { ?>
     <div class="musicContainer">
         <div class="soundCardContainer">
             <div class="artistImg">
-                <img src="<?= $sound->img ?>" alt="">
+                <a href="music-<?= $sound->id ?>"><img src="<?= $sound->img ?>" alt=""></a>
             </div>
             <div class="rightCardSection">
                 <div class="artistHeader">
-                    <i id="playBtn" class="bi bi-play-fill playBtn"></i>
+                    <div class="playBtnDiv">
+                        <i id="playBtn" class="bi bi-play-fill playBtn"></i>
+                    </div>
                     <div class="artistNameTitle">
                         <p class="artistName"><?= $sound->username ?></p>
                         <div class="titleAndDate">
-                            <p class="musicTitle"><?= $sound->title ?></p>
+                            <a href="music-<?= $sound->id ?>">
+                                <p class="musicTitle"><?= $sound->title ?></p>
+                            </a>
                             <p class="musicTitle small"><?= $sound->creationDate ?></p>
                         </div>
                     </div>
@@ -33,17 +51,26 @@ foreach ($getPost as $sound) { ?>
                 </div>
                 <div class="socials">
                     <div class="socialLikes">
-                        <i class="bi bi-heart"></i>
+                        <i title="Like it !" class="bi bi-heart"></i>
                         <span>4</span>
                     </div>
-                    <i class="bi bi-share-fill"></i>
+                    <i title="Share" class="bi bi-share-fill"></i>
                     <div class="socialListened">
-                        <i class="bi bi-play-fill musicListened"></i>
+                        <i title="Views" class="bi bi-play-fill musicListened"></i>
                         <span>32</span>
                     </div>
                     <div class="socialComments">
-                        <i class="bi bi-chat-right-fill"></i>
+                        <a href="music-<?= $sound->id ?>"><i title="Comments" class="bi bi-chat-right-fill"></i></a>
                         <span>4</span>
+                    </div>
+                    <div class="socialOption">
+                        <div class="dropdown">
+                            <i title="Options" class="bi bi-three-dots dotBtn" id="dotBtn"></i>
+                            <ul class="dropdownMenu">
+                                <li><a class="dropdown-item" href="#">Modifier</a></li>
+                                <li><a class="dropdown-item" href="#">Supprimer</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,6 +110,7 @@ foreach ($getPost as $sound) { ?>
             container: wave,
             waveColor: "#57508b",
             progressColor: "#c942a6",
+            height: 100,
             barWidth: 3,
             barGap: 0.5,
             url: wave.getAttribute("path"),
