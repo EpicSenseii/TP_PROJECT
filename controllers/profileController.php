@@ -63,6 +63,7 @@ if (isset($_POST['updateUser'])) {
                     $_SESSION['user']['img'] = $updateProfil->img;
                 }
                 //Permet de changer le nom d'utilisateur immédiatement
+                $_SESSION['user']['description'] = $updateProfil->description;
                 $_SESSION['user']['username'] = $updateProfil->username;
                 //Permet de rafraichir la page après le submit, pour rafraichir les éléments avec les nouveaux textes
                 // echo "<meta http-equiv='refresh' content='0'>";

@@ -13,6 +13,7 @@ class posts
     public $email;
     public $description;
     public $searchTerm;
+    public $userId;
     private $db;
 
     public function __construct()
@@ -49,7 +50,9 @@ class posts
 
     public function getList()
     {
-        $query = 'SELECT `bty9i_sounds`.`id`, `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate` FROM bty9i_sounds
+        $query = 'SELECT `bty9i_sounds`.`id`, `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate`,
+        (SELECT COUNT(*) FROM bty9i_comments WHERE `id_bty9i_sounds` = `bty9i_sounds`.`id`) AS commentsNumber
+        FROM bty9i_sounds
         INNER JOIN bty9i_users ON `id_bty9i_users` = bty9i_users.id';
         $request = $this->db->query($query);
         return $request->fetchAll(PDO::FETCH_OBJ);
@@ -57,7 +60,9 @@ class posts
 
     public function getOneById()
     {
-        $query = 'SELECT `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate` FROM bty9i_sounds
+        $query = 'SELECT `title`, `mp3Files`,`bty9i_sounds`.`img`, `username`, DATE_FORMAT(`creationDate`, "%d/%m/%Y") AS `creationDate`,
+        (SELECT COUNT(*) FROM bty9i_comments WHERE `id_bty9i_sounds` = `bty9i_sounds`.`id`) AS commentsNumber
+        FROM bty9i_sounds
         INNER JOIN bty9i_users ON `id_bty9i_users` = bty9i_users.id 
         WHERE `bty9i_sounds`.`id` = :id;';
         $request = $this->db->prepare($query);
@@ -75,5 +80,14 @@ class posts
         $request->bindValue(':title', $this->searchTerm, PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function delSound()
+    {
+        $query = 'DELETE FROM bty9i_sounds WHERE id = :soundId AND id_bty9i_users = :userId';
+        $request = $this->db->prepare($query);
+        $request->bindValue(':soundId', $this->id, PDO::PARAM_INT);
+        $request->bindValue(':userId', $this->userId, PDO::PARAM_INT);
+        return $request->execute();
     }
 }

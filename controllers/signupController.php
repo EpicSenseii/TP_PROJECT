@@ -18,7 +18,7 @@ if (count($_POST) > 0) {
         if (preg_match($regex['username'], $_POST['username'])) {
             $user->username = strip_tags($_POST['username']);
         } else {
-            $formErrors['username'] = 'Votre nom d\'utilisateur n\'est pas valide. Il doit comporter au moins 3 lettres et ne peut contenit que des lettres, chiffres et tirets.';
+            $formErrors['username'] = 'Votre nom d\'utilisateur n\'est pas valide. Il doit comporter au moins 3 lettres et ne peut contenir que des lettres, chiffres et tirets.';
         }
     } else {
         $formErrors['username'] = 'Veuillez renseigner votre nom d\'utilisateur.';

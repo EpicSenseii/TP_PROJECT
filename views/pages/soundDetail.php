@@ -7,14 +7,19 @@
             </div>
             <div class="rightCardSection">
                 <div class="artistHeader">
-                    <div class="playBtnDiv">
-                        <i id="playBtn" class="bi bi-play-fill playBtn"></i>
-                    </div>
+                    <i id="playBtn" class="bi bi-play-fill playBtn"></i>
                     <div class="artistNameTitle">
                         <p class="artistName"><?= $post->username ?></p>
                         <div class="titleAndDate">
                             <p class="musicTitle"><?= $post->title ?></p>
                             <p class="musicTitle small"><?= $post->creationDate ?></p>
+                            <?php if (isset($_SESSION['user']['id'])) { ?>
+                                <form class="commentEdit" action="" method="POST">
+                                    <input type="hidden" name="comment_id" value="">
+                                    <input class="editComment" type="submit" value="&times">
+                                    <a href="edit-" class="editCommentBtn"><i class="bi bi-pencil editComment"></i></a>
+                                </form>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -36,7 +41,7 @@
                     </div>
                     <div class="socialComments">
                         <i title="Comments" class="bi bi-chat-right-fill"></i>
-                        <span>4</span>
+                        <span><?= $post->commentsNumber ?></span>
                     </div>
                     <div class="socialOption">
                         <i title="Options" class="bi bi-three-dots"></i>

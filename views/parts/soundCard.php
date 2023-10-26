@@ -30,9 +30,7 @@ foreach ($getPost as $sound) { ?>
             </div>
             <div class="rightCardSection">
                 <div class="artistHeader">
-                    <div class="playBtnDiv">
-                        <i id="playBtn" class="bi bi-play-fill playBtn"></i>
-                    </div>
+                    <i id="playBtn" class="bi bi-play-fill playBtn"></i>
                     <div class="artistNameTitle">
                         <p class="artistName"><?= $sound->username ?></p>
                         <div class="titleAndDate">
@@ -61,7 +59,7 @@ foreach ($getPost as $sound) { ?>
                     </div>
                     <div class="socialComments">
                         <a href="music-<?= $sound->id ?>"><i title="Comments" class="bi bi-chat-right-fill"></i></a>
-                        <span>4</span>
+                        <span><?= $sound->commentsNumber ?></span>
                     </div>
                     <div class="socialOption">
                         <div class="dropdown">
@@ -79,14 +77,6 @@ foreach ($getPost as $sound) { ?>
 <?php } ?>
 
 <script type="module">
-    // var splide = new Splide('.splide', {
-    //     type: 'loop',
-    //     drag: 'free',
-    //     snap: true,
-    //     perPage: 4,
-    // });
-
-    // splide.mount();
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
 
     let isPlaying = false;

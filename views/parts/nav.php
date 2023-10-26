@@ -17,9 +17,7 @@
         <div class="navFlex userNAvSection">
             <?php if (isset($_SESSION['user'])) { ?>
                 <li><a href="upload">Uploader</a></li>
-            <?php } ?>
-            <div class="iconAndConnection">
-                <?php if (isset($_SESSION['user'])) { ?>
+                <div class="iconAndConnection">
                     <li><img class="userIcon" src="<?= $_SESSION['user']['img'] ?>" alt=""></li>
                 <?php } ?>
 
@@ -29,8 +27,8 @@
                 <?php } else { ?>
                     <li id="logoutBtn"><a href="signin">Connexion</a></li>
                 <?php } ?>
-            </div>
-            <li><i class="bi bi-bell-fill"></i></li>
+                </div>
+                <li><i class="bi bi-bell-fill"></i></li>
         </div>
     </ul>
 </nav>

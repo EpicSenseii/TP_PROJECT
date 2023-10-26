@@ -69,6 +69,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['comment_id'])) {
+        // Récupérer l'ID du commentaire à supprimer depuis le formulaire
+        $commentId = $_POST['comment_id'];
+        
+        // Créer une instance de la classe comments
+        $comment = new comments();
+        $comment->id = $commentId;
+        $comment->userId = $_SESSION['user']['id'];
+
+        $posts = new posts;
+
+        // Appeler la méthode pour supprimer le commentaire
+        if ($comment->delComment()) {
+            // Commentaire supprimé avec succès
+            header('Location: #');
+            exit();
+        } else {
+            // Erreur lors de la suppression du commentaire
+            echo 'Erreur lors de la suppression du commentaire.';
+        }
+    }
+}
+
 
 
 $commentsList = $comment->getCommentsList();

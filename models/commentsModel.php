@@ -57,7 +57,7 @@ class comments
         $query = "UPDATE bty9i_comments SET comment = :updated_comment WHERE id = :comment_id";
         $request = $this->db->prepare($query);
         $request->bindValue(':updated_comment', $this->updatedComment, PDO::PARAM_STR);
-        $request->bindValue(':comment_id', $this->commentId, PDO::PARAM_INT);
+        $request->bindValue(':comment_id', $this->id, PDO::PARAM_INT);
         return $request->execute();
     }
 }

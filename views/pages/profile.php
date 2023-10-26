@@ -10,7 +10,7 @@
     <label for="usernameChange">Modifiez votre nom d'utilisateur</label>
     <input type="text" name="usernameChange" id="usernameChange" value="<?= $_SESSION['user']['username'] ?>" placeholder="<?= $_SESSION['user']['username'] ?>">
     <label for="userDescription">Entrez une description</label>
-    <input type="text" name="userDescription" id="userDescription" value="<?= $userInfos->description ?>" placeholder="Descrivez-vous">
+    <input type="text" name="userDescription" id="userDescription" value="<?= $_SESSION['user']['description'] ?>" placeholder="Descrivez-vous">
     <label for="birthdate">Ajoutez votre date de naissance</label>
     <input type="date" value="<?= $userInfos->birthdate ?>" name="birthdate" id="birthdate">
     <input class="submitBtn" type="submit" name="updateUser" value="Valider les changements">

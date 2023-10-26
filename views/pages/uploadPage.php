@@ -4,7 +4,7 @@
         <label for="musicFile">Choisissez votre musique</label>
         <input type="file" name="musicFile" id="musicFile">
     </div>
-    <label for="musicName">Entrez le nom de la musique</label>
+    <label for="musicName">Entrez le titre de la musique</label>
     <input type="text" name="musicName" id="musicName" placeholder="Nom de la musique">
     <label for="musicDescription">Entrez une description</label>
     <input type="text" name="musicDescription" id="musicDescription" placeholder="Description de la musique">

@@ -7,7 +7,7 @@ require_once '../models/usersModel.php';
 $title = "SoundTherapy - Editer";
 
 $updateComment = new comments();
-$updateComment->commentId = $_GET['commentId'];
+$updateComment->id = $_GET['id'];
 
 $formErrors = [];
 
@@ -22,15 +22,13 @@ if (isset($_POST['updateComment'])) {
     if (count($formErrors) == 0) {
         try {
             if ($updateComment->updateComment()) {
-                $success['infos'] = "Le commentaire à été modifié";
+                header('location: music-'.$_GET['id']);
             }
         } catch (PDOException $e) {
             $formErrors['general'] = 'Une erreur est survenue, l\'administrateur a été prévenu';
         }
     }
 }
-
-var_dump($_GET['edit-']);
 
 require_once '../views/header.php';
 require_once '../views/parts/nav.php';
